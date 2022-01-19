@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -589,37 +589,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e42fb3417ee4fc2aa1e2fdcf9f7fdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  predefinedModel: 0
-  blurSize: 0.7
-  blurStrength: 0.6
-  bleedingSize: 0.75
-  bleedingStrength: 0.5
-  chromaticAberrationOffset: 1.25
-  RGBMaskIntensivity: 0.6
-  RGBMaskStrength: 0.6
-  RGBMaskBleeding: 0.1
+  predefinedModel: 9
+  blurSize: 0.9
+  blurStrength: 1
+  bleedingSize: 0.8
+  bleedingStrength: 0.65
+  chromaticAberrationOffset: 0
+  RGBMaskIntensivity: 0.7
+  RGBMaskStrength: 0.7
+  RGBMaskBleeding: 0.2
   colorNoiseMode: 0
-  colorNoiseStrength: 0.15
+  colorNoiseStrength: 0
   whiteNoiseMode: 4
-  whiteNoiseStrength: 0.25
-  darkestLevel: {r: 0, g: 0, b: 0, a: 1}
-  brightestLevel: {r: 0.92156863, g: 0.92156863, b: 0.92156863, a: 1}
-  darkestColor: {r: 0.15686275, g: 0.15686275, b: 0.15686275, a: 1}
-  brightestColor: {r: 1, g: 1, b: 1, a: 1}
-  brightness: 0.2
-  contrast: 0.1
-  saturation: -0.05
-  interferenceWidth: 25
-  interferenceSpeed: 3
-  interferenceStrength: 0
-  interferenceSplit: 0.25
-  maskMode: 1
-  maskStrength: 0.35
-  curvatureX: 0.6
-  curvatureY: 0.6
+  whiteNoiseStrength: 0
+  darkestLevel: {r: 0.039215688, g: 0.039215688, b: 0.039215688, a: 1}
+  brightestLevel: {r: 0.8039216, g: 0.8039216, b: 0.8039216, a: 1}
+  darkestColor: {r: 0, g: 0.11764706, b: 0, a: 1}
+  brightestColor: {r: 0.09803922, g: 1, b: 0.09803922, a: 1}
+  brightness: 0.4
+  contrast: -0.1
+  saturation: -0.8
+  interferenceWidth: 300
+  interferenceSpeed: 25
+  interferenceStrength: 0.0035
+  interferenceSplit: 0
+  maskMode: 5
+  maskStrength: 0.25
+  curvatureX: 0.55
+  curvatureY: 0.55
   overscan: 0
   vignetteSize: 0.35
-  vignetteStrength: 0.1
+  vignetteStrength: 0.35
   textureScaling: 2
   scalingPolicy: 2
   textureSize: 768

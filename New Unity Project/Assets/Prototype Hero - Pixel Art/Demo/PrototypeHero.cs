@@ -6,10 +6,10 @@ public class PrototypeHero : MonoBehaviour {
     public float      m_runSpeed = 4.5f;
     public float      m_walkSpeed = 2.0f;
     public float      m_jumpForce = 7.5f;
-    public float      m_dodgeForce = 8.0f;
+    public float      m_dodgeForce = 7.0f;
     public float      m_parryKnockbackForce = 4.0f; 
     public bool       m_noBlood = false;
-    public bool       m_hideSword = false;
+    public bool       m_hideSword = true;
 
     private Animator            m_animator;
     private Rigidbody2D         m_body2d;
@@ -201,7 +201,7 @@ public class PrototypeHero : MonoBehaviour {
             m_disableMovementTimer = 0.1f;
             DisableWallSensors();
         }
-
+        
         // Parry & parry stance
         else if (Input.GetMouseButtonDown(1) && !m_dodging && !m_ledgeGrab && !m_ledgeClimb && !m_crouching && m_grounded)
         {
@@ -221,7 +221,7 @@ public class PrototypeHero : MonoBehaviour {
                 m_parryTimer = 7.0f / 12.0f;
             }
         }
-
+        /*
         //Up Attack
         else if (Input.GetMouseButtonDown(0) && Input.GetKey("w") && !m_dodging && !m_ledgeGrab && !m_ledgeClimb && !m_crouching && m_grounded && m_timeSinceAttack > 0.2f)
         {
@@ -286,7 +286,7 @@ public class PrototypeHero : MonoBehaviour {
             // Reset timer
             m_timeSinceAttack = 0.0f;
         }
-
+        */
         // Dodge
         else if (Input.GetKeyDown("left shift") && m_grounded && !m_dodging && !m_ledgeGrab && !m_ledgeClimb)
         {
@@ -307,7 +307,7 @@ public class PrototypeHero : MonoBehaviour {
         }
 
         // Ledge Climb
-        else if(Input.GetKeyDown("w") && m_ledgeGrab)
+        else if(Input.GetKeyDown(KeyCode.UpArrow) && m_ledgeGrab)
         {
             DisableWallSensors();
             m_ledgeClimb = true;
@@ -317,7 +317,7 @@ public class PrototypeHero : MonoBehaviour {
         }
 
         // Ledge Drop
-        else if (Input.GetKeyDown("s") && m_ledgeGrab)
+        else if (Input.GetKeyDown(KeyCode.DownArrow) && m_ledgeGrab)
         {
             DisableWallSensors();
         }
@@ -342,13 +342,13 @@ public class PrototypeHero : MonoBehaviour {
         }
 
         //Crouch / Stand up
-        else if (Input.GetKeyDown("s") && m_grounded && !m_dodging && !m_ledgeGrab && !m_ledgeClimb && m_parryTimer < 0.0f)
+        else if (Input.GetKeyDown(KeyCode.DownArrow) && m_grounded && !m_dodging && !m_ledgeGrab && !m_ledgeClimb && m_parryTimer < 0.0f)
         {
             m_crouching = true;
             m_animator.SetBool("Crouching", true);
             m_body2d.velocity = new Vector2(m_body2d.velocity.x / 2.0f, m_body2d.velocity.y);
         }
-        else if (Input.GetKeyUp("s") && m_crouching)
+        else if (Input.GetKeyUp(KeyCode.DownArrow) && m_crouching)
         {
             m_crouching = false;
             m_animator.SetBool("Crouching", false);
