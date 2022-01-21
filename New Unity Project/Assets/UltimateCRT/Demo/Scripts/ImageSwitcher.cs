@@ -23,7 +23,7 @@ public class ImageSwitcher : MonoBehaviour {
 
 		var size = 0;
 		foreach(var p in allPresets)
-			if(p != BaseCRTEffect.Preset.Custom)
+			if(p != BaseCRTEffect.Preset.ColorTV)
 				presets[size++] = p;
 
 		textures = Resources.LoadAll<Texture2D>("");

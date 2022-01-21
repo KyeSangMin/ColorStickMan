@@ -4,7 +4,8 @@ using System.Collections;
 [ExecuteInEditMode]
 [RequireComponent(typeof(Camera))]
 public class BaseCRTEffect : MonoBehaviour {
-	public static void SetupDefaultPreset(BaseCRTEffect effect) {
+	/*
+	   public static void SetupDefaultPreset(BaseCRTEffect effect) {
 		effect.blurSize						= 0.7f;	
 		effect.blurStrength 				= 0.6f;
 		effect.bleedingSize 				= 0.75f;
@@ -111,44 +112,9 @@ public class BaseCRTEffect : MonoBehaviour {
 		effect.scalingPolicy				= TextureScalingPolicy.DownscaleOnly;
 		effect.textureSize					= 768;
 	}
+	*/
 
-	public static void SetupColorTVPreset(BaseCRTEffect effect) {
-		effect.blurSize						= 0.9f;	
-		effect.blurStrength					= 0.6f;
-		effect.bleedingSize 				= 0.85f;
-		effect.bleedingStrength 			= 0.75f;
-		effect.chromaticAberrationOffset 	= 1.75f;
-		effect.RGBMaskIntensivity			= 0.4f;
-		effect.RGBMaskStrength				= 0.4f;
-		effect.RGBMaskBleeding				= 0.1f;
-		effect.colorNoiseMode				= NoiseMode.Add;
-		effect.colorNoiseStrength			= 0.3f;
-		effect.whiteNoiseMode				= NoiseMode.Lighten;
-		effect.whiteNoiseStrength			= 0.2f;
-		effect.darkestLevel					= Color.black;
-		effect.brightestLevel				= Color.Lerp(Color.black, Color.white, 235.0f / 255.0f);
-		effect.darkestColor					= Color.Lerp(Color.black, Color.white, 35.0f / 255.0f);
-		effect.brightestColor 				= new Color(245.0f / 255.0f, 1.0f, 1.0f);
-		effect.brightness					= 0.0f;
-		effect.contrast						= 0.2f;
-		effect.saturation					= 0.1f;
-		effect.interferenceWidth			= 25.0f;
-		effect.interferenceSpeed			= 3.0f;
-		effect.interferenceStrength			= 0.0f;
-		effect.interferenceSplit			= 0.25f;
-		effect.maskMode						= MaskMode.Denser;
-		effect.maskStrength 				= 0.2f;
-		effect.curvatureX					= 0.5f;
-		effect.curvatureY					= 0.5f;
-		effect.overscan						= 0.1f;			
-		effect.vignetteSize					= 0.4f;
-		effect.vignetteStrength				= 0.5f;
-		effect.textureScaling				= TextureScalingMode.AdjustForHeight;
-		effect.scalingPolicy				= TextureScalingPolicy.DownscaleOnly;
-		effect.textureSize					= 768;
-	}
-
-	public static void SetupOldTVPreset(BaseCRTEffect effect) {
+	/*public static void SetupOldTVPreset(BaseCRTEffect effect) {
 		effect.blurSize						= 0.9f;	
 		effect.blurStrength					= 0.8f;
 		effect.bleedingSize 				= 0.95f;
@@ -362,17 +328,166 @@ public class BaseCRTEffect : MonoBehaviour {
 		effect.textureScaling				= TextureScalingMode.AdjustForHeight;
 		effect.scalingPolicy				= TextureScalingPolicy.DownscaleOnly;
 		effect.textureSize					= 768;
+	}*/
+
+
+	public static void SetupColorTVPreset(BaseCRTEffect effect)
+	{
+		effect.blurSize = 0.9f;
+		effect.blurStrength = 0.6f;
+		effect.bleedingSize = 0.85f;
+		effect.bleedingStrength = 0.75f;
+		effect.chromaticAberrationOffset = 1.75f;
+		effect.RGBMaskIntensivity = 0.4f;
+		effect.RGBMaskStrength = 0.4f;
+		effect.RGBMaskBleeding = 0.1f;
+		effect.colorNoiseMode = NoiseMode.Add;
+		effect.colorNoiseStrength = 0.3f;
+		effect.whiteNoiseMode = NoiseMode.Lighten;
+		effect.whiteNoiseStrength = 0.2f;
+		effect.darkestLevel = Color.black;
+		effect.brightestLevel = Color.Lerp(Color.black, Color.white, 235.0f / 255.0f);
+		effect.darkestColor = Color.Lerp(Color.black, Color.white, 35.0f / 255.0f);
+		effect.brightestColor = new Color(245.0f / 255.0f, 1.0f, 1.0f);
+		effect.brightness = 0.0f;
+		effect.contrast = 0.2f;
+		effect.saturation = 0.1f;
+		effect.interferenceWidth = 25.0f;
+		effect.interferenceSpeed = 3.0f;
+		effect.interferenceStrength = 0.0f;
+		effect.interferenceSplit = 0.25f;
+		effect.maskMode = MaskMode.Denser;
+		effect.maskStrength = 0.2f;
+		effect.curvatureX = 0.5f;
+		effect.curvatureY = 0.5f;
+		effect.overscan = 0.1f;
+		effect.vignetteSize = 0.4f;
+		effect.vignetteStrength = 0.5f;
+		effect.textureScaling = TextureScalingMode.AdjustForHeight;
+		effect.scalingPolicy = TextureScalingPolicy.DownscaleOnly;
+		effect.textureSize = 768;
 	}
 
-	public enum Preset { Custom, Default, KitchenTV, MiniCRT, ColorTV, OldTV, HighEndMonitor, ArcadeDisplay, BrokenBlackAndWhite, GreenTerminal, YellowMonitor };
+	public static void SetupRedColorTVPreset(BaseCRTEffect effect)
+	{
+		effect.blurSize = 0.9f;
+		effect.blurStrength = 0.6f;
+		effect.bleedingSize = 0.85f;
+		effect.bleedingStrength = 0.75f;
+		effect.chromaticAberrationOffset = 1.75f;
+		effect.RGBMaskIntensivity = 0.4f;
+		effect.RGBMaskStrength = 0.4f;
+		effect.RGBMaskBleeding = 0.1f;
+		effect.colorNoiseMode = NoiseMode.Add;
+		effect.colorNoiseStrength = 0.3f;
+		effect.whiteNoiseMode = NoiseMode.Lighten;
+		effect.whiteNoiseStrength = 0.2f;
+		effect.darkestLevel = Color.black;
+		effect.brightestLevel = Color.Lerp(Color.black, Color.white, 235.0f / 255.0f);
+		effect.darkestColor = Color.Lerp(Color.black, Color.white, 35.0f / 255.0f);
+		effect.brightestColor = new Color(255.0f, 0.0f, 0.0f);
+		effect.brightness = 0.0f;
+		effect.contrast = 0.2f;
+		effect.saturation = 0.1f;
+		effect.interferenceWidth = 25.0f;
+		effect.interferenceSpeed = 3.0f;
+		effect.interferenceStrength = 0.0f;
+		effect.interferenceSplit = 0.25f;
+		effect.maskMode = MaskMode.Denser;
+		effect.maskStrength = 0.2f;
+		effect.curvatureX = 0.5f;
+		effect.curvatureY = 0.5f;
+		effect.overscan = 0.1f;
+		effect.vignetteSize = 0.4f;
+		effect.vignetteStrength = 0.5f;
+		effect.textureScaling = TextureScalingMode.AdjustForHeight;
+		effect.scalingPolicy = TextureScalingPolicy.DownscaleOnly;
+		effect.textureSize = 768;
+	}
+
+	public static void SetupGreenColorTVPreset(BaseCRTEffect effect)
+	{
+		effect.blurSize = 0.9f;
+		effect.blurStrength = 0.6f;
+		effect.bleedingSize = 0.85f;
+		effect.bleedingStrength = 0.75f;
+		effect.chromaticAberrationOffset = 1.75f;
+		effect.RGBMaskIntensivity = 0.4f;
+		effect.RGBMaskStrength = 0.4f;
+		effect.RGBMaskBleeding = 0.1f;
+		effect.colorNoiseMode = NoiseMode.Add;
+		effect.colorNoiseStrength = 0.3f;
+		effect.whiteNoiseMode = NoiseMode.Lighten;
+		effect.whiteNoiseStrength = 0.2f;
+		effect.darkestLevel = Color.black;
+		effect.brightestLevel = Color.Lerp(Color.black, Color.white, 235.0f / 255.0f);
+		effect.darkestColor = Color.Lerp(Color.black, Color.white, 35.0f / 255.0f);
+		effect.brightestColor = new Color(0.0f, 255.0f, 0.0f);
+		effect.brightness = 0.0f;
+		effect.contrast = 0.2f;
+		effect.saturation = 0.1f;
+		effect.interferenceWidth = 25.0f;
+		effect.interferenceSpeed = 3.0f;
+		effect.interferenceStrength = 0.0f;
+		effect.interferenceSplit = 0.25f;
+		effect.maskMode = MaskMode.Denser;
+		effect.maskStrength = 0.2f;
+		effect.curvatureX = 0.5f;
+		effect.curvatureY = 0.5f;
+		effect.overscan = 0.1f;
+		effect.vignetteSize = 0.4f;
+		effect.vignetteStrength = 0.5f;
+		effect.textureScaling = TextureScalingMode.AdjustForHeight;
+		effect.scalingPolicy = TextureScalingPolicy.DownscaleOnly;
+		effect.textureSize = 768;
+	}
+
+	public static void SetupBlueColorTVPreset(BaseCRTEffect effect)
+	{
+		effect.blurSize = 0.9f;
+		effect.blurStrength = 0.6f;
+		effect.bleedingSize = 0.85f;
+		effect.bleedingStrength = 0.75f;
+		effect.chromaticAberrationOffset = 1.75f;
+		effect.RGBMaskIntensivity = 0.4f;
+		effect.RGBMaskStrength = 0.4f;
+		effect.RGBMaskBleeding = 0.1f;
+		effect.colorNoiseMode = NoiseMode.Add;
+		effect.colorNoiseStrength = 0.3f;
+		effect.whiteNoiseMode = NoiseMode.Lighten;
+		effect.whiteNoiseStrength = 0.2f;
+		effect.darkestLevel = Color.black;
+		effect.brightestLevel = Color.Lerp(Color.black, Color.white, 235.0f / 255.0f);
+		effect.darkestColor = Color.Lerp(Color.black, Color.white, 35.0f / 255.0f);
+		effect.brightestColor = new Color(0.0f, 255.0f, 255.0f);
+		effect.brightness = 0.0f;
+		effect.contrast = 0.2f;
+		effect.saturation = 0.1f;
+		effect.interferenceWidth = 25.0f;
+		effect.interferenceSpeed = 3.0f;
+		effect.interferenceStrength = 0.0f;
+		effect.interferenceSplit = 0.25f;
+		effect.maskMode = MaskMode.Denser;
+		effect.maskStrength = 0.2f;
+		effect.curvatureX = 0.5f;
+		effect.curvatureY = 0.5f;
+		effect.overscan = 0.1f;
+		effect.vignetteSize = 0.4f;
+		effect.vignetteStrength = 0.5f;
+		effect.textureScaling = TextureScalingMode.AdjustForHeight;
+		effect.scalingPolicy = TextureScalingPolicy.DownscaleOnly;
+		effect.textureSize = 768;
+	}
+
+	public enum Preset {ColorTV , RedColorTV , GreenColorTV, BlueColorTV };
 
 	public enum NoiseMode { Add, Subtract, Multiply, Divide, Lighten, Darken };  
 	public enum MaskMode { Thin, Dense, Denser, ThinScanline, Scanline, DenseScanline };
 	public enum TextureScalingMode { Off, AdjustForWidth, AdjustForHeight };
 	public enum TextureScalingPolicy { Always, UpscaleOnly, DownscaleOnly };
 
-	public Preset predefinedModel = Preset.Custom;
-	protected Preset preset = Preset.Custom;
+	public Preset predefinedModel = Preset.ColorTV;
+	protected Preset preset = Preset.ColorTV;
 
 	[Header("Blur")]
 	[Range(0.0f, 1.0f)]
@@ -593,47 +708,21 @@ public class BaseCRTEffect : MonoBehaviour {
 			preset = predefinedModel;
 
 			switch(preset) {
-				case Preset.Custom:
-					break;
-
-				case Preset.Default:
-					SetupDefaultPreset(this);
-					break;
-
-				case Preset.KitchenTV:
-					SetupKitchenTVPreset(this);
-					break;
-
-				case Preset.MiniCRT:
-					SetupMiniCRTPreset(this);
-					break;
-
+	
 				case Preset.ColorTV:
 					SetupColorTVPreset(this);
 					break;
 
-				case Preset.OldTV:
-					SetupOldTVPreset(this);
+				case Preset.RedColorTV:
+					SetupRedColorTVPreset(this);
 					break;
 
-				case Preset.HighEndMonitor:
-					SetupHighEndMonitorPreset(this);
+				case Preset.GreenColorTV:
+					SetupGreenColorTVPreset(this);
 					break;
 
-				case Preset.ArcadeDisplay:
-					SetupArcadeDisplayPreset(this);
-					break;
-
-				case Preset.BrokenBlackAndWhite:
-					SetupBrokenBlackAndWhitePreset(this);
-					break;
-
-				case Preset.GreenTerminal:
-					SetupGreenTerminalPreset(this);
-					break;
-
-				case Preset.YellowMonitor:
-					SetupYellowMonitorPreset(this);
+				case Preset.BlueColorTV:
+					SetupBlueColorTVPreset(this);
 					break;
 			}
 		}
