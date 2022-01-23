@@ -479,7 +479,7 @@ public class BaseCRTEffect : MonoBehaviour {
 		effect.textureSize = 768;
 	}
 
-	public enum Preset {ColorTV , RedColorTV , GreenColorTV, BlueColorTV };
+	public enum Preset { defTV,ColorTV, RedColorTV,GreenColorTV,BlueColorTV};
 
 	public enum NoiseMode { Add, Subtract, Multiply, Divide, Lighten, Darken };  
 	public enum MaskMode { Thin, Dense, Denser, ThinScanline, Scanline, DenseScanline };
@@ -708,7 +708,11 @@ public class BaseCRTEffect : MonoBehaviour {
 			preset = predefinedModel;
 
 			switch(preset) {
-	
+
+				case Preset.defTV:
+					SetupColorTVPreset(this);
+					break;
+
 				case Preset.ColorTV:
 					SetupColorTVPreset(this);
 					break;

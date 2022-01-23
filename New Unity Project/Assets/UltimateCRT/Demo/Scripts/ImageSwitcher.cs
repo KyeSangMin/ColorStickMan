@@ -16,16 +16,17 @@ public class ImageSwitcher : MonoBehaviour {
 	private Text text;
 
 	private float textVisibleDuration = 0.0f;
+	private int y;
 
 	void Awake() {
 		BaseCRTEffect.Preset[] allPresets = (BaseCRTEffect.Preset[]) System.Enum.GetValues(typeof(BaseCRTEffect.Preset));
-		presets = new BaseCRTEffect.Preset[allPresets.Length - 1];
+		presets = new BaseCRTEffect.Preset[allPresets.Length];
 
 		var size = 0;
 		foreach(var p in allPresets)
 			if(p != BaseCRTEffect.Preset.ColorTV)
 				presets[size++] = p;
-
+		//프리셋 배열에 저장
 		textures = Resources.LoadAll<Texture2D>("");
 
 		spriteRenderer 	= GetComponent<SpriteRenderer>();
@@ -36,7 +37,7 @@ public class ImageSwitcher : MonoBehaviour {
 			if(effect != null)
 				break;
 		}
-			
+			/*
 		var texts = FindObjectsOfType<Text>();
 		foreach(var t in texts) {
 			if(t.name != "Preset Name")
@@ -45,10 +46,10 @@ public class ImageSwitcher : MonoBehaviour {
 			text = t;
 			break;
 		}
+			*/
+		//text.enabled = false;
 
-		text.enabled = false;
-
-		textureIndex = System.Array.IndexOf(textures, spriteRenderer.sprite.texture);
+		//textureIndex = System.Array.IndexOf(textures, spriteRenderer.sprite.texture);
 		presetIndex = System.Array.IndexOf(presets, effect.predefinedModel);
 
 		if(presetIndex < 0) {
@@ -56,7 +57,8 @@ public class ImageSwitcher : MonoBehaviour {
 			presetIndex = 0;
 		}
 
-		ShowPresetName(presets[presetIndex]);
+		//ShowPresetName(presets[presetIndex]);
+	
 	}
 	
 	void Update () {
@@ -65,30 +67,53 @@ public class ImageSwitcher : MonoBehaviour {
 
 			if(textVisibleDuration <= 0.0f) {
 				textVisibleDuration = 0.0f;
-				text.enabled = false;
+				//text.enabled = false;
 			}
 		}
 
-		var x = Input.GetKeyDown("a") ? -1 : Input.GetKeyDown("d") ? 1 : 0;
-		var y = Input.GetKeyDown("w") ? -1 : Input.GetKeyDown("s") ? 1 : 0;
-		var onOff = Input.GetKeyDown(KeyCode.Space);
+		//var x = Input.GetKeyDown("a") ? -1 : Input.GetKeyDown("d") ? 1 : 0;
+		//var y = Input.GetKeyDown("w") ? -1 : Input.GetKeyDown("s") ? 1 : 0;
+		
+		if(Input.GetKeyDown("a"))
+        {
+			y = 1;
+        }
+		else if (Input.GetKeyDown("s"))
+		{
+			y = 2;
+		}
+		else if (Input.GetKeyDown("d"))
+		{
+			y = 3;
+		}
+		else if (Input.GetKeyDown("q"))
+		{
+			y = 0;
+		}
 
-		if(x == 0 && y == 0 && ! onOff)
-			return;
+		var onOff = Input.GetKeyDown("e");
 
-		var texInd = (textureIndex + x + textures.Length) % textures.Length;
-		var preInd = (presetIndex + y + presets.Length) % presets.Length;
+		
 
+		//var texInd = (textureIndex + x + textures.Length) % textures.Length;
+		//var preInd = (presetIndex + y + presets.Length) % presets.Length;
+		
+		var preInd = y;
+
+
+/*
 		if(textureIndex != texInd) {
 			spriteRenderer.sprite = Sprite.Create(textures[texInd], new Rect(0.0f, 0.0f, textures[texInd].width, textures[texInd].height), new Vector2(0.5f, 0.5f));
 			textureIndex = texInd;
 		}
+*/
 
 		if(presetIndex != preInd) {
 			presetIndex = preInd;
 			effect.predefinedModel = presets[preInd];
 
-			ShowPresetName(presets[preInd]);
+
+			//ShowPresetName(presets[preInd]);
 		}
 
 		if(onOff) {
@@ -98,13 +123,14 @@ public class ImageSwitcher : MonoBehaviour {
 		}
 	}
 
+	/*
 	public void OnUpClicked() {
 		var preInd = (presetIndex - 1 + presets.Length) % presets.Length;
 
 		presetIndex = preInd;
 		effect.predefinedModel = presets[preInd];
 
-		ShowPresetName(presets[preInd]);
+		//ShowPresetName(presets[preInd]);
 	}
 
 	public void OnDownClicked() {
@@ -113,16 +139,17 @@ public class ImageSwitcher : MonoBehaviour {
 		presetIndex = preInd;
 		effect.predefinedModel = presets[preInd];
 
-		ShowPresetName(presets[preInd]);
+		//ShowPresetName(presets[preInd]);
 	}
 
-	public void OnLeftClicked() {
+	
+	 public void OnLeftClicked() {
 		var texInd = (textureIndex - 1 + textures.Length) % textures.Length;
 
 		spriteRenderer.sprite = Sprite.Create(textures[texInd], new Rect(0.0f, 0.0f, textures[texInd].width, textures[texInd].height), new Vector2(0.5f, 0.5f));
 		textureIndex = texInd;
 	}
-
+	
 	public void OnRightClicked() {
 		var texInd = (textureIndex + 1 + textures.Length) % textures.Length;
 
@@ -136,17 +163,19 @@ public class ImageSwitcher : MonoBehaviour {
 		ShowOnOff(effect.enabled);
 	}
 
+	/*
 	private void ShowPresetName(BaseCRTEffect.Preset preset) {
 		text.text = preset.ToString();
 		text.enabled = true;
 
 		textVisibleDuration = 2.0f;
 	}
-
+	*/
 	private void ShowOnOff(bool on) {
-		text.text = on ? "[postprocess: on]" : "[postprocess: off]";
-		text.enabled = true;
+		//text.text = on ? "[postprocess: on]" : "[postprocess: off]";
+		//text.enabled = true;
 
 		textVisibleDuration = 2.0f;
 	}
+	
 }
