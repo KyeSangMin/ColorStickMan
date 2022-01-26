@@ -384,8 +384,8 @@ public class BaseCRTEffect : MonoBehaviour {
 		effect.whiteNoiseStrength = 0.2f;
 		effect.darkestLevel = Color.black;
 		effect.brightestLevel = Color.Lerp(Color.black, Color.white, 235.0f / 255.0f);
-		effect.darkestColor = Color.Lerp(Color.black, Color.white, 35.0f / 255.0f);
-		effect.brightestColor = new Color(255.0f, 0.0f, 0.0f);
+		effect.darkestColor = Color.Lerp(Color.black, Color.red, 70.0f / 255.0f);
+		effect.brightestColor = new Color(217.0f / 255.0f, 146.0f / 255.0f, 140.0f / 255.0f);
 		effect.brightness = 0.0f;
 		effect.contrast = 0.2f;
 		effect.saturation = 0.1f;
@@ -421,8 +421,8 @@ public class BaseCRTEffect : MonoBehaviour {
 		effect.whiteNoiseStrength = 0.2f;
 		effect.darkestLevel = Color.black;
 		effect.brightestLevel = Color.Lerp(Color.black, Color.white, 235.0f / 255.0f);
-		effect.darkestColor = Color.Lerp(Color.black, Color.white, 35.0f / 255.0f);
-		effect.brightestColor = new Color(0.0f, 255.0f, 0.0f);
+		effect.darkestColor = Color.Lerp(Color.black, Color.green, 70.0f / 255.0f);
+		effect.brightestColor = new Color(165.0f /255.0f, 219.0f / 255.0f, 162.0f /255.0f);
 		effect.brightness = 0.0f;
 		effect.contrast = 0.2f;
 		effect.saturation = 0.1f;
@@ -458,8 +458,8 @@ public class BaseCRTEffect : MonoBehaviour {
 		effect.whiteNoiseStrength = 0.2f;
 		effect.darkestLevel = Color.black;
 		effect.brightestLevel = Color.Lerp(Color.black, Color.white, 235.0f / 255.0f);
-		effect.darkestColor = Color.Lerp(Color.black, Color.white, 35.0f / 255.0f);
-		effect.brightestColor = new Color(0.0f, 255.0f, 255.0f);
+		effect.darkestColor = Color.Lerp(Color.black, Color.blue, 70.0f / 255.0f);
+		effect.brightestColor = new Color(162.0f /255.0f, 190.0f / 255.0f, 219.0f / 255.0f);
 		effect.brightness = 0.0f;
 		effect.contrast = 0.2f;
 		effect.saturation = 0.1f;

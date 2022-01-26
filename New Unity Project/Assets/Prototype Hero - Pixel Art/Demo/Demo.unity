@@ -367,7 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e42fb3417ee4fc2aa1e2fdcf9f7fdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  predefinedModel: 0
+  predefinedModel: 4
   blurSize: 0.9
   blurStrength: 0.6
   bleedingSize: 0.85
@@ -382,8 +382,8 @@ MonoBehaviour:
   whiteNoiseStrength: 0.2
   darkestLevel: {r: 0, g: 0, b: 0, a: 1}
   brightestLevel: {r: 0.92156863, g: 0.92156863, b: 0.92156863, a: 1}
-  darkestColor: {r: 0.13725491, g: 0.13725491, b: 0.13725491, a: 1}
-  brightestColor: {r: 0.9607843, g: 1, b: 1, a: 1}
+  darkestColor: {r: 0, g: 0, b: 0.27450982, a: 1}
+  brightestColor: {r: 0.63529414, g: 0.74509805, b: 0.85882354, a: 1}
   brightness: 0
   contrast: 0.2
   saturation: 0.1
@@ -2064,6 +2064,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5779919143759674799, guid: e481822248898d04e9808a3d3ca78e5a, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5779919143759674799, guid: e481822248898d04e9808a3d3ca78e5a, type: 3}
+      propertyPath: m_hideSword
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5779919143759674799, guid: e481822248898d04e9808a3d3ca78e5a, type: 3}
