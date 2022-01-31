@@ -18,6 +18,8 @@ public class ImageSwitcher : MonoBehaviour {
 	private float textVisibleDuration = 0.0f;
 	private int y;
 
+	private SpriteRenderer render;
+
 	void Awake() {
 		BaseCRTEffect.Preset[] allPresets = (BaseCRTEffect.Preset[]) System.Enum.GetValues(typeof(BaseCRTEffect.Preset));
 		presets = new BaseCRTEffect.Preset[allPresets.Length];
@@ -30,7 +32,7 @@ public class ImageSwitcher : MonoBehaviour {
 		textures = Resources.LoadAll<Texture2D>("");
 
 		spriteRenderer 	= GetComponent<SpriteRenderer>();
-
+		render = GameObject.Find("Sprite").GetComponent<SpriteRenderer>();
 		foreach(Camera camera in Camera.allCameras) {
 			effect = camera.GetComponentInChildren<BaseCRTEffect>();
 
@@ -74,21 +76,25 @@ public class ImageSwitcher : MonoBehaviour {
 		//var x = Input.GetKeyDown("a") ? -1 : Input.GetKeyDown("d") ? 1 : 0;
 		//var y = Input.GetKeyDown("w") ? -1 : Input.GetKeyDown("s") ? 1 : 0;
 		
-		if(Input.GetKeyDown("a"))
+		if(Input.GetKeyDown("a")) // 빨강
         {
 			y = 1;
+			render.color = new Color(255.0f / 255.0f, 5.0f / 255.0f, 0.0f / 255.0f);
         }
-		else if (Input.GetKeyDown("s"))
+		else if (Input.GetKeyDown("s")) // 초록 
 		{
 			y = 2;
+			render.color = new Color(80.0f/ 255.0f, 255.0f / 255.0f, 0.0f/ 255.0f);
 		}
-		else if (Input.GetKeyDown("d"))
+		else if (Input.GetKeyDown("d")) // 파랑 
 		{
 			y = 3;
+			render.color = new Color(0.0f / 255.0f, 155.0f / 255.0f, 255.0f / 255.0f);
 		}
-		else if (Input.GetKeyDown("q"))
+		else if (Input.GetKeyDown("q")) // 초기화 
 		{
 			y = 0;
+			render.color = new Color(255.0f, 255.0f, 255.0f);
 		}
 
 		var onOff = Input.GetKeyDown("e");
