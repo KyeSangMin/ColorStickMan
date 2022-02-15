@@ -88,55 +88,19 @@ public class ImageSwitcher : MonoBehaviour {
 
 		if (Input.GetKeyDown("a")) // 빨강
 		{
-			y = 1;
-			//render.color = new Color(255.0f / 255.0f, 5.0f / 255.0f, 0.0f / 255.0f);
-			for (int i = 0; i < SpriteTag.Length; i++)
-			{
-				SpriteTag[i].GetComponent<SpriteRenderer>().color = new Color(255.0f / 255.0f, 5.0f / 255.0f, 0.0f / 255.0f);
-			}
-			for (int i = 0; i < TileMapTag.Length; i++)
-			{
-				TileMapTag[i].GetComponent<Tilemap>().color = new Color(255.0f / 255.0f, 5.0f / 255.0f, 0.0f / 255.0f);
-			}
+			SetColorRed();
 		}
 		else if (Input.GetKeyDown("s")) // 초록 
 		{
-			y = 2;
-			//render.color = new Color(80.0f/ 255.0f, 255.0f / 255.0f, 0.0f/ 255.0f);
-			for (int i = 0; i < SpriteTag.Length; i++)
-			{
-				SpriteTag[i].GetComponent<SpriteRenderer>().color = new Color(80.0f / 255.0f, 255.0f / 255.0f, 0.0f / 255.0f);
-			}
-			for (int i = 0; i < TileMapTag.Length; i++)
-            {
-				TileMapTag[i].GetComponent<Tilemap>().color = new Color(80.0f / 255.0f, 255.0f / 255.0f, 0.0f / 255.0f);
-			}
+			SetColorGreen();
 		}
 		else if (Input.GetKeyDown("d")) // 파랑 
 		{
-			y = 3;
-			//render.color = new Color(0.0f / 255.0f, 155.0f / 255.0f, 255.0f / 255.0f);
-			for (int i = 0; i < SpriteTag.Length; i++)
-			{
-				SpriteTag[i].GetComponent<SpriteRenderer>().color = new Color(0.0f / 255.0f, 155.0f / 255.0f, 255.0f / 255.0f);
-			}
-			for (int i = 0; i < TileMapTag.Length; i++)
-			{
-				TileMapTag[i].GetComponent<Tilemap>().color = new Color(0.0f / 255.0f, 155.0f / 255.0f, 255.0f / 255.0f);
-			}
+			SetColorBlue();
 		}
 		else if (Input.GetKeyDown("q")) // 초기화 
 		{
-			y = 0;
-			//render.color = new Color(255.0f, 255.0f, 255.0f);
-			for (int i = 0; i < SpriteTag.Length; i++)
-			{
-				SpriteTag[i].GetComponent<SpriteRenderer>().color = new Color(255.0f / 255.0f, 255.0f / 255.0f, 255.0f / 255.0f);
-			}
-			for (int i = 0; i < TileMapTag.Length; i++)
-			{
-				TileMapTag[i].GetComponent<Tilemap>().color = new Color(255.0f / 255.0f, 255.0f / 255.0f, 255.0f / 255.0f);
-			}
+			SetColorReset();
 		}
 
 		var onOff = Input.GetKeyDown("e");
@@ -225,5 +189,62 @@ public class ImageSwitcher : MonoBehaviour {
 
 		textVisibleDuration = 2.0f;
 	}
-	
+
+
+	public void SetColorRed()
+    {
+		y = 1;
+		//render.color = new Color(255.0f / 255.0f, 5.0f / 255.0f, 0.0f / 255.0f);
+		for (int i = 0; i < SpriteTag.Length; i++)
+		{
+			SpriteTag[i].GetComponent<SpriteRenderer>().color = new Color(255.0f / 255.0f, 5.0f / 255.0f, 0.0f / 255.0f);
+		}
+		for (int i = 0; i < TileMapTag.Length; i++)
+		{
+			TileMapTag[i].GetComponent<Tilemap>().color = new Color(255.0f / 255.0f, 5.0f / 255.0f, 0.0f / 255.0f);
+		}
+	}
+
+	public void SetColorGreen()
+	{
+		y = 2;
+		//render.color = new Color(80.0f/ 255.0f, 255.0f / 255.0f, 0.0f/ 255.0f);
+		for (int i = 0; i < SpriteTag.Length; i++)
+		{
+			SpriteTag[i].GetComponent<SpriteRenderer>().color = new Color(80.0f / 255.0f, 255.0f / 255.0f, 0.0f / 255.0f);
+		}
+		for (int i = 0; i < TileMapTag.Length; i++)
+		{
+			TileMapTag[i].GetComponent<Tilemap>().color = new Color(80.0f / 255.0f, 255.0f / 255.0f, 0.0f / 255.0f);
+		}
+	}
+	public void SetColorBlue()
+	{
+		y = 3;
+		//render.color = new Color(0.0f / 255.0f, 155.0f / 255.0f, 255.0f / 255.0f);
+		for (int i = 0; i < SpriteTag.Length; i++)
+		{
+			SpriteTag[i].GetComponent<SpriteRenderer>().color = new Color(0.0f / 255.0f, 155.0f / 255.0f, 255.0f / 255.0f);
+		}
+		for (int i = 0; i < TileMapTag.Length; i++)
+		{
+			TileMapTag[i].GetComponent<Tilemap>().color = new Color(0.0f / 255.0f, 155.0f / 255.0f, 255.0f / 255.0f);
+		}
+	}
+
+	public void SetColorReset()
+	{
+		y = 0;
+		//render.color = new Color(255.0f, 255.0f, 255.0f);
+		for (int i = 0; i < SpriteTag.Length; i++)
+		{
+			SpriteTag[i].GetComponent<SpriteRenderer>().color = new Color(255.0f / 255.0f, 255.0f / 255.0f, 255.0f / 255.0f);
+		}
+		for (int i = 0; i < TileMapTag.Length; i++)
+		{
+			TileMapTag[i].GetComponent<Tilemap>().color = new Color(255.0f / 255.0f, 255.0f / 255.0f, 255.0f / 255.0f);
+		}
+	}
+
+
 }
