@@ -7,7 +7,7 @@ using UnityEngine.Tilemaps;
 [RequireComponent(typeof(SpriteRenderer))]
 public class ImageSwitcher : MonoBehaviour {
 
-	public static ImageSwitcher instance;
+	//public static ImageSwitcher instance;
 
 	private int textureIndex;
 	private Texture2D[] textures;
@@ -30,7 +30,7 @@ public class ImageSwitcher : MonoBehaviour {
 
 	void Awake() {
 
-		instance = this;
+		//instance = this;
 
 		BaseCRTEffect.Preset[] allPresets = (BaseCRTEffect.Preset[]) System.Enum.GetValues(typeof(BaseCRTEffect.Preset));
 		presets = new BaseCRTEffect.Preset[allPresets.Length];
