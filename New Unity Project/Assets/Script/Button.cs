@@ -11,14 +11,25 @@ public class Button : MonoBehaviour
 
     private bool ButtonState; //넣은 이유를 못찾을시 삭제
 
-    public GameObject[] RedButtontag; 
+    public GameObject[] ChildArray;
+    public GameObject ParentButton;
+
+    private bool ButtonComparison;
+
+
 
     void Start()
     {
         anima = GetComponent<Animator>();
         ButtonState = false;
-        RedButtontag = GameObject.FindGameObjectsWithTag("RedButton");
-       
+
+        ParentButton = GameObject.Find("Switch");
+        ChildArray = new GameObject[ParentButton.transform.childCount];
+       for(int i = 0; i<ParentButton.transform.childCount;i++)
+        {
+            ChildArray[i] = ParentButton.transform.GetChild(i).gameObject;
+            Debug.Log(i);
+        }
     }
 
     // Update is called once per frame
@@ -37,6 +48,7 @@ public class Button : MonoBehaviour
 
         if (anima.GetBool("Button") && ButtonState == true)
         {
+            GameObject.Find("Switcher").GetComponent<ImageSwitcher>().SetColorReset();
             //ImageSwitcher.instance.SetColorRed();
             if (gameObject.CompareTag("RedButton"))
             {
@@ -68,6 +80,10 @@ public class Button : MonoBehaviour
         StartCoroutine(ButtonDelay(Time));
     }
 
+    public bool GetButtonState()
+    {
+        return ButtonState;
+    }
 
     
 
@@ -76,14 +92,28 @@ public class Button : MonoBehaviour
 
         yield return new WaitForSeconds(Time);
 
-        ButtonState = false;
+        
         anima.SetBool("Button", false);
+
+        for (int i = 0; i < ChildArray.Length; i++)
+        {
+            Debug.Log("check1");
+            ButtonComparison = ChildArray[i].GetComponent<Button>().GetButtonState();
+            if (ButtonComparison == true)
+            {
+                ButtonState = true;
+                Debug.Log("check2");
+            }
+        }
+
         if (ButtonState == false)
         {
             //ImageSwitcher.instance.SetColorReset();
             GameObject.Find("Switcher").GetComponent<ImageSwitcher>().SetColorReset();
-            Debug.Log("reset");
+            
         }
+
+        ButtonState = false;
 
     }
 
