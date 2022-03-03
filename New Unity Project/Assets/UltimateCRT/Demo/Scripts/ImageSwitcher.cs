@@ -30,7 +30,7 @@ public class ImageSwitcher : MonoBehaviour {
 
 	void Awake() {
 
-		//instance = this;
+		
 
 		BaseCRTEffect.Preset[] allPresets = (BaseCRTEffect.Preset[]) System.Enum.GetValues(typeof(BaseCRTEffect.Preset));
 		presets = new BaseCRTEffect.Preset[allPresets.Length];

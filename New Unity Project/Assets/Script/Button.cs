@@ -9,18 +9,31 @@ public class Button : MonoBehaviour
     public Animator anima;
     public float Time;
 
-    private bool ButtonState;
+    private bool ButtonState; //넣은 이유를 못찾을시 삭제
+
+    public GameObject[] RedButtontag; 
 
     void Start()
     {
         anima = GetComponent<Animator>();
         ButtonState = false;
+        RedButtontag = GameObject.FindGameObjectsWithTag("RedButton");
+       
     }
 
     // Update is called once per frame
     void Update()
     {
 
+
+       
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        anima.SetBool("Button", true);
+        ButtonState = true;
 
         if (anima.GetBool("Button") && ButtonState == true)
         {
@@ -31,7 +44,7 @@ public class Button : MonoBehaviour
             }
             else if (gameObject.CompareTag("BlueButton"))
             {
-                GameObject.Find("Switcher").GetComponent<ImageSwitcher>().SetColorBlue();   
+                GameObject.Find("Switcher").GetComponent<ImageSwitcher>().SetColorBlue();
             }
             else if (gameObject.CompareTag("GreenButton"))
             {
@@ -39,18 +52,6 @@ public class Button : MonoBehaviour
             }
 
         }
-        else
-        {
-            //ImageSwitcher.instance.SetColorReset();
-            GameObject.Find("Switcher").GetComponent<ImageSwitcher>().SetColorReset();
-        }
-        
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        anima.SetBool("Button", true);
-        ButtonState = true;
         
     }
 
@@ -68,6 +69,8 @@ public class Button : MonoBehaviour
     }
 
 
+    
+
     IEnumerator ButtonDelay(float Time)
     {
 
@@ -75,6 +78,12 @@ public class Button : MonoBehaviour
 
         ButtonState = false;
         anima.SetBool("Button", false);
+        if (ButtonState == false)
+        {
+            //ImageSwitcher.instance.SetColorReset();
+            GameObject.Find("Switcher").GetComponent<ImageSwitcher>().SetColorReset();
+            Debug.Log("reset");
+        }
 
     }
 
