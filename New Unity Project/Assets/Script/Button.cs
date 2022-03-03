@@ -43,27 +43,42 @@ public class Button : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        anima.SetBool("Button", true);
-        ButtonState = true;
 
-        if (anima.GetBool("Button") && ButtonState == true)
+
+        if(!ButtonState)
         {
-            GameObject.Find("Switcher").GetComponent<ImageSwitcher>().SetColorReset();
-            //ImageSwitcher.instance.SetColorRed();
-            if (gameObject.CompareTag("RedButton"))
-            {
-                GameObject.Find("Switcher").GetComponent<ImageSwitcher>().SetColorRed();
-            }
-            else if (gameObject.CompareTag("BlueButton"))
-            {
-                GameObject.Find("Switcher").GetComponent<ImageSwitcher>().SetColorBlue();
-            }
-            else if (gameObject.CompareTag("GreenButton"))
-            {
-                GameObject.Find("Switcher").GetComponent<ImageSwitcher>().SetColorGreen();
-            }
+            anima.SetBool("Button", true);
+            ButtonState = true;
 
+            GameObject.Find("CRTCamera").GetComponent<FollowCam>().ShakeTime = 0.5f;
+
+            if (anima.GetBool("Button") && ButtonState == true)
+            {
+                GameObject.Find("Switcher").GetComponent<ImageSwitcher>().SetColorReset();
+                //ImageSwitcher.instance.SetColorRed();
+                if (gameObject.CompareTag("RedButton"))
+                {
+                    GameObject.Find("Switcher").GetComponent<ImageSwitcher>().SetColorRed();
+                }
+                else if (gameObject.CompareTag("BlueButton"))
+                {
+                    GameObject.Find("Switcher").GetComponent<ImageSwitcher>().SetColorBlue();
+                }
+                else if (gameObject.CompareTag("GreenButton"))
+                {
+                    GameObject.Find("Switcher").GetComponent<ImageSwitcher>().SetColorGreen();
+                }
+
+            }
         }
+        else
+        {
+            
+            anima.SetBool("Button", true);
+            ButtonState = true;
+            
+        }
+     
         
     }
 
@@ -77,7 +92,11 @@ public class Button : MonoBehaviour
             anima.SetBool("Button", false);
         }
         */
-        StartCoroutine(ButtonDelay(Time));
+
+        if (ButtonState)
+        {
+            StartCoroutine(ButtonDelay(Time));
+        }
     }
 
     public bool GetButtonState()

@@ -27,6 +27,7 @@ public class ImageSwitcher : MonoBehaviour {
 	public GameObject RedObjects;
 	public GameObject BlueObjects;
 	public GameObject GreenObjects;
+	public GameObject NoneObjects;
 
 
 	private SpriteRenderer render;
@@ -55,6 +56,8 @@ public class ImageSwitcher : MonoBehaviour {
 		RedObjects = GameObject.FindGameObjectWithTag("RedObjects");
 		GreenObjects = GameObject.FindGameObjectWithTag("GreenObjects");
 		BlueObjects = GameObject.FindGameObjectWithTag("BlueObjects");
+		NoneObjects = GameObject.FindGameObjectWithTag("sprite");
+		NoneObjects.SetActive(false);
 
 
 		foreach (Camera camera in Camera.allCameras) {
@@ -218,6 +221,7 @@ public class ImageSwitcher : MonoBehaviour {
 			TileMapTag[i].GetComponent<Tilemap>().color = new Color(255.0f / 255.0f, 5.0f / 255.0f, 0.0f / 255.0f);
 		}
 		RedObjects.SetActive(false);
+		NoneObjects.SetActive(true);
 
 	}
 
@@ -234,6 +238,7 @@ public class ImageSwitcher : MonoBehaviour {
 			TileMapTag[i].GetComponent<Tilemap>().color = new Color(80.0f / 255.0f, 255.0f / 255.0f, 0.0f / 255.0f);
 		}
 		GreenObjects.SetActive(false);
+		NoneObjects.SetActive(true);
 	}
 	public void SetColorBlue()
 	{
@@ -248,6 +253,7 @@ public class ImageSwitcher : MonoBehaviour {
 			TileMapTag[i].GetComponent<Tilemap>().color = new Color(0.0f / 255.0f, 155.0f / 255.0f, 255.0f / 255.0f);
 		}
 		BlueObjects.SetActive(false);
+		NoneObjects.SetActive(true);
 	}
 
 	public void SetColorReset()
@@ -265,6 +271,7 @@ public class ImageSwitcher : MonoBehaviour {
 		RedObjects.SetActive(true);
 		BlueObjects.SetActive(true);
 		GreenObjects.SetActive(true);
+		NoneObjects.SetActive(false);
 	}
 
 

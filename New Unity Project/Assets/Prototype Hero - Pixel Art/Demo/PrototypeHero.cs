@@ -327,18 +327,23 @@ public class PrototypeHero : MonoBehaviour {
         {
             // Check if it's a normal jump or a wall jump
             if(!m_wallSlide)
+            {
                 m_body2d.velocity = new Vector2(m_body2d.velocity.x, m_jumpForce);
+                m_animator.SetTrigger("Jump");
+                m_grounded = false;
+                m_animator.SetBool("Grounded", m_grounded);
+                m_groundSensor.Disable(0.2f);
+            }
+                
+
             else
             {
-                m_body2d.velocity = new Vector2(-m_facingDirection * m_jumpForce / 2.0f, m_jumpForce);
-                m_facingDirection = -m_facingDirection;
-                m_SR.flipX = !m_SR.flipX;
+               // m_body2d.velocity = new Vector2(-m_facingDirection * m_jumpForce / 2.0f, m_jumpForce);
+                //m_facingDirection = -m_facingDirection;
+                //m_SR.flipX = !m_SR.flipX;
             }
 
-            m_animator.SetTrigger("Jump");
-            m_grounded = false;
-            m_animator.SetBool("Grounded", m_grounded);
-            m_groundSensor.Disable(0.2f);
+          
         }
 
         //Crouch / Stand up
