@@ -9,6 +9,9 @@ TagManager:
   - RedButton
   - BlueButton
   - GreenButton
+  - RedObjects
+  - BlueObjects
+  - GreenObjects
   layers:
   - Default
   - TransparentFX
