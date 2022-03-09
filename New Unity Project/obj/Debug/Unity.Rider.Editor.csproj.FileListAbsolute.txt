@@ -1,0 +1,2 @@
+C:\Users\Hasta\Documents\GitHub\ColorStickMan\New Unity Project\obj\Debug\Unity.Rider.Editor.csproj.AssemblyReference.cache
+C:\Users\Hasta\Documents\GitHub\ColorStickMan\New Unity Project\obj\Debug\Unity.Rider.Editor.csproj.CoreCompileInputs.cache

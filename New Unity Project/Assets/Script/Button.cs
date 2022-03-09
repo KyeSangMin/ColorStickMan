@@ -16,6 +16,9 @@ public class Button : MonoBehaviour
 
     private bool ButtonComparison;
 
+    Coroutine ButtonRoutine;
+
+
 
 
     void Start()
@@ -23,13 +26,16 @@ public class Button : MonoBehaviour
         anima = GetComponent<Animator>();
         ButtonState = false;
 
+
         ParentButton = GameObject.Find("Switch");
         ChildArray = new GameObject[ParentButton.transform.childCount];
        for(int i = 0; i<ParentButton.transform.childCount;i++)
         {
             ChildArray[i] = ParentButton.transform.GetChild(i).gameObject;
-            Debug.Log(i);
+            
         }
+
+        ButtonRoutine = StartCoroutine(ButtonDelay(Time));
     }
 
     // Update is called once per frame
@@ -49,7 +55,7 @@ public class Button : MonoBehaviour
         {
             anima.SetBool("Button", true);
             ButtonState = true;
-
+        
             GameObject.Find("CRTCamera").GetComponent<FollowCam>().ShakeTime = 0.5f;
 
             if (anima.GetBool("Button") && ButtonState == true)
@@ -69,6 +75,8 @@ public class Button : MonoBehaviour
                     GameObject.Find("Switcher").GetComponent<ImageSwitcher>().SetColorGreen();
                 }
 
+                GameObject.Find("ButtonSystem").GetComponent<ButtonSystem>().PushIndex(this.gameObject);
+
             }
         }
         else
@@ -78,25 +86,19 @@ public class Button : MonoBehaviour
             ButtonState = true;
             
         }
-     
-        
+
+        Debug.Log("Start");
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        /*
-        if (ButtonState == true)
-            return;
-        else
-        {
-            anima.SetBool("Button", false);
-        }
-        */
+       
 
         if (ButtonState)
         {
             StartCoroutine(ButtonDelay(Time));
         }
+
     }
 
     public bool GetButtonState()
@@ -104,36 +106,122 @@ public class Button : MonoBehaviour
         return ButtonState;
     }
 
-    
+    public void ResetIEnum()
+    {
+
+        ButtonState = false;
+        anima.SetBool("Button", false);
+        
+    }
+
+
+    public bool CheckState()
+    {
+
+        for (int i = 0; i < ChildArray.Length; i++)
+        {
+            Debug.Log("check1");
+            ButtonComparison = ChildArray[i].GetComponent<Button>().GetButtonState();
+
+            if (ButtonComparison == true && ChildArray[i].gameObject != this.gameObject)
+            {
+                // ButtonState = true;
+                //ChildArray[i].GetComponent<Button>().ResetIEnum();
+                // Debug.Log("stop" + gameObject.name);
+                return true;
+            }
+        }
+
+
+        return false;
+    }
+
+    public void SetButtonState()
+    {
+
+        for (int i = 0; i < ChildArray.Length; i++)
+        {
+            Debug.Log("check1");
+            ButtonComparison = ChildArray[i].GetComponent<Button>().GetButtonState();
+
+            if (ButtonComparison == true && ChildArray[i].gameObject != this.gameObject)
+            {
+
+                ChildArray[i].GetComponent<Button>().ButtonState = false;
+               
+                
+            }
+        }
+    }
+
+    public void ResetState()
+    {
+
+        for (int i = 0; i < ChildArray.Length; i++)
+        {
+
+            ButtonComparison = ChildArray[i].GetComponent<Button>().ButtonState = false;
+
+       
+        }
+    }
+
+    public void StopRoution()
+    {
+        StopCoroutine(ButtonRoutine);
+    }
 
     IEnumerator ButtonDelay(float Time)
     {
 
         yield return new WaitForSeconds(Time);
 
-        
-        anima.SetBool("Button", false);
-
+        ButtonState = false;
+        /*
         for (int i = 0; i < ChildArray.Length; i++)
         {
             Debug.Log("check1");
             ButtonComparison = ChildArray[i].GetComponent<Button>().GetButtonState();
-            if (ButtonComparison == true)
+
+            if (ButtonComparison == true && ChildArray[i].gameObject != this.gameObject)
             {
                 ButtonState = true;
                 Debug.Log("check2");
+               // ChildArray[i].GetComponent<Button>().StopRoution();
+                ChildArray[i].GetComponent<Button>().ResetIEnum();
+                Debug.Log("stop"+gameObject.name);
             }
         }
 
-        if (ButtonState == false)
+        */
+       
+
+        if (!ButtonState && !CheckState())
         {
-            //ImageSwitcher.instance.SetColorReset();
-            GameObject.Find("Switcher").GetComponent<ImageSwitcher>().SetColorReset();
+            ResetState();
+            ResetIEnum();
             
+            anima.SetBool("Button", false);
+            Debug.Log(gameObject.name + "1");
+
+            if (GameObject.Find("ButtonSystem").GetComponent<ButtonSystem>().CheckIndex(this.gameObject))
+            {
+                GameObject.Find("Switcher").GetComponent<ImageSwitcher>().SetColorReset();
+                GameObject.Find("ButtonSystem").GetComponent<ButtonSystem>().ResetIndex();
+            }
         }
 
-        ButtonState = false;
-
+        else
+        {
+            SetButtonState();
+            ResetIEnum();
+            anima.SetBool("Button", false);
+            Debug.Log(gameObject.name+ "2");
+        }
+       
+   
+ 
+        
     }
 
 }
