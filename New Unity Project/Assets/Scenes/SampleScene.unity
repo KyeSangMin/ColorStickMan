@@ -6304,7 +6304,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  MaxIndex: 100
 --- !u!1 &872272799
 GameObject:
   m_ObjectHideFlags: 0

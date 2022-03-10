@@ -29,7 +29,7 @@ public class Button : MonoBehaviour
 
         ParentButton = GameObject.Find("Switch");
         ChildArray = new GameObject[ParentButton.transform.childCount];
-       for(int i = 0; i<ParentButton.transform.childCount;i++)
+       for(int i = 0; i < ParentButton.transform.childCount;i++)
         {
             ChildArray[i] = ParentButton.transform.GetChild(i).gameObject;
             

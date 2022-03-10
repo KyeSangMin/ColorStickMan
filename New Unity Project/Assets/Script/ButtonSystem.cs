@@ -7,15 +7,21 @@ public class ButtonSystem : MonoBehaviour
 
 
     public GameObject[] ButtonStatic;
+    GameObject ParentButton;
+    GameObject[] ChildArray;
     int Indexnum;
-    public int MaxIndex = 10;
+    int MaxIndex;
 
     GameObject TempObject;
     // Start is called before the first frame update
     void Start()
     { 
         Indexnum = 0;
-        GameObject[] ButtonStatic = new GameObject[MaxIndex];
+        ParentButton = GameObject.Find("Switch");
+        MaxIndex = ParentButton.transform.childCount;
+        ButtonStatic = new GameObject[MaxIndex];
+        
+        
    
     }
 
@@ -35,13 +41,13 @@ public class ButtonSystem : MonoBehaviour
 
     public void PopIndex()
     {
-        ButtonStatic[Indexnum] = null;
+        ButtonStatic[Indexnum-1] = null;
         Indexnum--;
-    }
+    }   
 
     public void ResetIndex()
     {
-        for (int i = 0; i < Indexnum; Indexnum-- )
+        for (int i = 0; i <= Indexnum; Indexnum-- )
         {
             ButtonStatic[Indexnum] = null;
         }
@@ -54,7 +60,8 @@ public class ButtonSystem : MonoBehaviour
         TempObject = gameObject;
         if (Indexnum == 0 && ButtonStatic[Indexnum] == TempObject)
             return true;
-        else if (ButtonStatic[Indexnum-1] == TempObject)
+
+        else if (Indexnum != 0 && ButtonStatic[Indexnum-1] == TempObject)
         {
             return true;
         }
