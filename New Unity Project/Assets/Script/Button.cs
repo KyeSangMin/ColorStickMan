@@ -208,6 +208,7 @@ public class Button : MonoBehaviour
             {
                 GameObject.Find("Switcher").GetComponent<ImageSwitcher>().SetColorReset();
                 GameObject.Find("ButtonSystem").GetComponent<ButtonSystem>().ResetIndex();
+                GameObject.Find("CRTCamera").GetComponent<FollowCam>().ShakeTime = 0.5f;
             }
         }
 
