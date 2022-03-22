@@ -78,6 +78,12 @@ public class PrototypeHeroAnimEvents : MonoBehaviour
     void AE_Throw()
     {
         m_audioManager.PlaySound("Jump");
+        GameObject.Find("PrototypeHero").GetComponent<PrototypeHero>().m_Throwing = true;
+    }
+
+    void AE_ThrowEnd()
+    {
+        GameObject.Find("PrototypeHero").GetComponent<PrototypeHero>().m_Throwing = false;
     }
 
     void AE_Parry()

@@ -7,8 +7,9 @@ public class Lever : MonoBehaviour
     public Animator animator;
 
     private GameObject actBlock;
+    private GameObject[] ChildBlock;
     private bool OnLever = false;
-
+    private bool CheckThrow;
 
     // Start is called before the first frame update
     void Start()
@@ -16,30 +17,63 @@ public class Lever : MonoBehaviour
         animator = GetComponent<Animator>();
         animator.SetBool("OnLever", false);
 
+
+        ChildBlock = new GameObject[this.transform.childCount];
+
+        for (int i = 0; i < this.transform.childCount; i++)
+        {
+            ChildBlock[i] = this.transform.GetChild(i).gameObject;
+
+        }
+
+        for (int i = 0; i < this.transform.childCount; i++)
+        {
+            ChildBlock[i].SetActive(false);
+        }
+        CheckThrow = GameObject.Find("PrototypeHero").GetComponent<PrototypeHero>().m_Throwing;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!animator.GetBool("OnLever") && OnLever && Input.GetKeyDown(KeyCode.F))
-            Push_Lever();
-        
-        else if (animator.GetBool("OnLever") && OnLever && Input.GetKeyDown(KeyCode.F))
-            Pull_Lever();
-            
+        CheckThrow = GameObject.Find("PrototypeHero").GetComponent<PrototypeHero>().m_Throwing;
+
+
+
+        if (Input.GetKeyDown(KeyCode.F) && !CheckThrow)
+        {
+            if (!animator.GetBool("OnLever") && OnLever)
+                Push_Lever();
+
+            else if (animator.GetBool("OnLever") && OnLever)
+                Pull_Lever();
+        }  
     }
 
     void Push_Lever()
     {
         animator.SetBool("OnLever", true);
-        actBlock.SetActive(true);
+        GameObject.Find("CRTCamera").GetComponent<FollowCam>().ShakeTime = 0.5f;
+        //actBlock.SetActive(true);
+
+        for (int i = 0; i < this.transform.childCount; i++)
+        {
+            ChildBlock[i].SetActive(true);
+        }
+
         
     }
 
     void Pull_Lever()
     {
         animator.SetBool("OnLever", false);
-        actBlock.SetActive(false);
+        GameObject.Find("CRTCamera").GetComponent<FollowCam>().ShakeTime = 0.5f;
+        //actBlock.SetActive(false);
+        for (int i = 0; i < this.transform.childCount; i++)
+        {
+            ChildBlock[i].SetActive(false);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -50,7 +84,7 @@ public class Lever : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if(other.gameObject.name=="PrototypeHero")
+        if(other.gameObject.name == "PrototypeHero")
             OnLever = false;
     }
 

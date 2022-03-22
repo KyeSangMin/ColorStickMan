@@ -37,7 +37,7 @@ public class PrototypeHero : MonoBehaviour {
     private float               m_timeSinceAttack = 0.0f;
     private float               m_gravity;
     public float                m_maxSpeed = 4.5f;
-
+    public bool m_Throwing = false;
     // Use this for initialization
     void Start ()
     {
@@ -298,7 +298,7 @@ public class PrototypeHero : MonoBehaviour {
         }
 
         // Throw
-        else if(Input.GetKeyDown("f") && m_grounded && !m_dodging && !m_ledgeGrab && !m_ledgeClimb)
+        else if(Input.GetKeyDown("f") && m_grounded && !m_dodging && !m_ledgeGrab && !m_ledgeClimb && !m_Throwing)
         {
             m_animator.SetTrigger("Throw");
 
