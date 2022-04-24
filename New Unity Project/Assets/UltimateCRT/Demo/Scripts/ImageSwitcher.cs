@@ -23,6 +23,7 @@ public class ImageSwitcher : MonoBehaviour {
 	private int y;
 
 	public GameObject[] SpriteTag;
+	public GameObject[] OnLeverTag;
 	public GameObject[] TileMapTag;
 	public GameObject RedObjects;
 	public GameObject BlueObjects;
@@ -51,6 +52,7 @@ public class ImageSwitcher : MonoBehaviour {
 		spriteRenderer 	= GetComponent<SpriteRenderer>();
 		//render = GameObject.Find("Sprite").GetComponent<SpriteRenderer>();
 		SpriteTag = GameObject.FindGameObjectsWithTag("sprite");
+		OnLeverTag = GameObject.FindGameObjectsWithTag("OnLever");
 		//render = SpriteTag[SpriteTag.Length].GetComponent<SpriteRenderer>();
 		TileMapTag = GameObject.FindGameObjectsWithTag("tilemap");
 		RedObjects = GameObject.FindGameObjectWithTag("RedObjects");
@@ -120,7 +122,7 @@ public class ImageSwitcher : MonoBehaviour {
 			SetColorReset();
 		}
 
-		var onOff = Input.GetKeyDown("e");
+		var onOff = Input.GetKeyDown("p");
 
 		
 
@@ -220,8 +222,12 @@ public class ImageSwitcher : MonoBehaviour {
 		{
 			TileMapTag[i].GetComponent<Tilemap>().color = new Color(255.0f / 255.0f, 5.0f / 255.0f, 0.0f / 255.0f);
 		}
+		for (int i = 0; i < OnLeverTag.Length; i++)
+		{
+			OnLeverTag[i].GetComponent<SpriteRenderer>().color = new Color(255.0f / 255.0f, 5.0f / 255.0f, 0.0f / 255.0f);
+		}
 		RedObjects.SetActive(false);
-		NoneObjects.SetActive(true);
+		//NoneObjects.SetActive(true);
 
 	}
 
@@ -237,8 +243,12 @@ public class ImageSwitcher : MonoBehaviour {
 		{
 			TileMapTag[i].GetComponent<Tilemap>().color = new Color(80.0f / 255.0f, 255.0f / 255.0f, 0.0f / 255.0f);
 		}
+		for (int i = 0; i < OnLeverTag.Length; i++)
+		{
+			OnLeverTag[i].GetComponent<SpriteRenderer>().color = new Color(80.0f / 255.0f, 255.0f / 255.0f, 0.0f / 255.0f);
+		}
 		GreenObjects.SetActive(false);
-		NoneObjects.SetActive(true);
+		//NoneObjects.SetActive(true);
 	}
 	public void SetColorBlue()
 	{
@@ -252,8 +262,12 @@ public class ImageSwitcher : MonoBehaviour {
 		{
 			TileMapTag[i].GetComponent<Tilemap>().color = new Color(0.0f / 255.0f, 155.0f / 255.0f, 255.0f / 255.0f);
 		}
+		for (int i = 0; i < OnLeverTag.Length; i++)
+		{
+			OnLeverTag[i].GetComponent<SpriteRenderer>().color = new Color(0.0f / 255.0f, 155.0f / 255.0f, 255.0f / 255.0f);
+		}
 		BlueObjects.SetActive(false);
-		NoneObjects.SetActive(true);
+		//NoneObjects.SetActive(true);
 	}
 
 	public void SetColorReset()
@@ -268,10 +282,14 @@ public class ImageSwitcher : MonoBehaviour {
 		{
 			TileMapTag[i].GetComponent<Tilemap>().color = new Color(255.0f / 255.0f, 255.0f / 255.0f, 255.0f / 255.0f);
 		}
+		for (int i = 0; i < OnLeverTag.Length; i++)
+		{
+			OnLeverTag[i].GetComponent<SpriteRenderer>().color = new Color(255.0f / 255.0f, 255.0f / 255.0f, 255.0f / 255.0f);
+		}
 		RedObjects.SetActive(true);
 		BlueObjects.SetActive(true);
 		GreenObjects.SetActive(true);
-		NoneObjects.SetActive(false);
+		//NoneObjects.SetActive(false);
 	}
 
 

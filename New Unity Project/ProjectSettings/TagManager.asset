@@ -12,6 +12,7 @@ TagManager:
   - RedObjects
   - BlueObjects
   - GreenObjects
+  - OnLever
   layers:
   - Default
   - TransparentFX

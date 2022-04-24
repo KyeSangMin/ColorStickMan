@@ -19,6 +19,7 @@ public class PrototypeHero : MonoBehaviour {
     private Sensor_Prototype    m_wallSensorR2;
     private Sensor_Prototype    m_wallSensorL1;
     private Sensor_Prototype    m_wallSensorL2;
+    public BoxCollider2D        m_boxcollider2d;
     private bool                m_grounded = false;
     private bool                m_moving = false;
     private bool                m_dead = false;
@@ -38,6 +39,13 @@ public class PrototypeHero : MonoBehaviour {
     private float               m_gravity;
     public float                m_maxSpeed = 4.5f;
     public bool m_Throwing = false;
+    public bool m_Dying = false;
+
+
+    public GameObject RespownPoint;
+    public GameObject Camera;
+
+
     // Use this for initialization
     void Start ()
     {
@@ -45,6 +53,7 @@ public class PrototypeHero : MonoBehaviour {
         m_body2d = GetComponent<Rigidbody2D>();
         m_SR = GetComponentInChildren<SpriteRenderer>();
         m_gravity = m_body2d.gravityScale;
+        m_boxcollider2d = GetComponent<BoxCollider2D>();
 
         m_groundSensor = transform.Find("GroundSensor").GetComponent<Sensor_Prototype>();
         m_wallSensorR1 = transform.Find("WallSensor_R1").GetComponent<Sensor_Prototype>();
@@ -184,11 +193,11 @@ public class PrototypeHero : MonoBehaviour {
 
         // -- Handle Animations --
         //Death
-        if (Input.GetKeyDown("e") && !m_dodging)
+        if (Input.GetKeyDown("e") && !m_dodging || m_Dying && !m_dodging)
         {
             m_animator.SetBool("noBlood", m_noBlood);
             m_animator.SetTrigger("Death");
-            m_respawnTimer = 2.5f;
+            m_respawnTimer = 0.1f;
             DisableWallSensors();
             m_dead = true;
         }
@@ -437,8 +446,24 @@ public class PrototypeHero : MonoBehaviour {
 
     void RespawnHero()
     {
-        transform.position = Vector3.zero;
+        transform.position = RespownPoint.transform.position;
+        Camera.transform.position = RespownPoint.transform.position;
+        //transform.position = Vector3.zero;
         m_dead = false;
+        m_Dying = false;
         m_animator.Rebind();
+    }
+
+    public bool GetDead()
+    {
+        if (m_dead == false)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+
     }
 }

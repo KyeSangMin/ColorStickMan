@@ -28,9 +28,20 @@ public class Lever : MonoBehaviour
 
         for (int i = 0; i < this.transform.childCount; i++)
         {
-            ChildBlock[i].SetActive(false);
+            if(ChildBlock[i].CompareTag("OnLever"))
+            {
+                ChildBlock[i].SetActive(true);
+                animator.SetBool("OnLever", true);
+            }
+            else
+            {
+                ChildBlock[i].SetActive(false);
+            }
+            
         }
         CheckThrow = GameObject.Find("PrototypeHero").GetComponent<PrototypeHero>().m_Throwing;
+
+        
 
     }
 
@@ -59,7 +70,14 @@ public class Lever : MonoBehaviour
 
         for (int i = 0; i < this.transform.childCount; i++)
         {
-            ChildBlock[i].SetActive(true);
+            if(ChildBlock[i].activeSelf == false)
+            {
+                ChildBlock[i].SetActive(true);
+            }
+            else
+            {
+                ChildBlock[i].SetActive(false);
+            }
         }
 
         
@@ -72,7 +90,14 @@ public class Lever : MonoBehaviour
         //actBlock.SetActive(false);
         for (int i = 0; i < this.transform.childCount; i++)
         {
-            ChildBlock[i].SetActive(false);
+            if (ChildBlock[i].activeSelf == true)
+            {
+                ChildBlock[i].SetActive(false);
+            }
+            else
+            {
+                ChildBlock[i].SetActive(true);
+            }
         }
     }
 
