@@ -33,13 +33,7 @@ public class LoopSystem : MonoBehaviour
     {
         if(other.CompareTag("Player") && Loop == false)
         {
-            Vector3 Ptemp = Player.transform.position;
-            Vector3 Ctemp = Camera.transform.position;
-            Vector3 Tailvec3 = Tail.transform.position;
-            Ptemp.x = Tailvec3.x - 0.5f;
-            Ctemp.x = Tailvec3.x - 0.5f;
-            Player.transform.position = Ptemp;
-            Camera.transform.position = Ctemp;
+            Teleport(Tail);
         }
 
         else
@@ -48,8 +42,18 @@ public class LoopSystem : MonoBehaviour
         }
     }
 
-   /* void OnTriggerExit2D(Collider2D other)
+
+
+
+    public void Teleport(GameObject Target)
     {
+        Vector3 Ptemp = Player.transform.position;
+        Vector3 Ctemp = Camera.transform.position;
+        Vector3 Tailvec3 = Target.transform.position;
+        Ptemp.x = Tailvec3.x - 0.5f;
+        Ctemp.x = Tailvec3.x - 0.5f;
+        Player.transform.position = Ptemp;
+        Camera.transform.position = Ctemp;
         
-    }*/
+    }
 }

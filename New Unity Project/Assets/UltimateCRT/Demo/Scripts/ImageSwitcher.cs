@@ -35,6 +35,12 @@ public class ImageSwitcher : MonoBehaviour {
 	private Tilemap map;
 
 
+	private bool ColorRed;
+	private bool ColorGreen;
+	private bool ColorBlue;
+	private bool ColorWhite;
+
+
 	void Awake() {
 
 		
@@ -60,6 +66,12 @@ public class ImageSwitcher : MonoBehaviour {
 		BlueObjects = GameObject.FindGameObjectWithTag("BlueObjects");
 		NoneObjects = GameObject.FindGameObjectWithTag("sprite");
 		NoneObjects.SetActive(false);
+		ColorRed = false;
+		ColorBlue = false;
+		ColorGreen = false;
+		ColorWhite = true;
+
+
 
 
 		foreach (Camera camera in Camera.allCameras) {
@@ -227,6 +239,10 @@ public class ImageSwitcher : MonoBehaviour {
 			OnLeverTag[i].GetComponent<SpriteRenderer>().color = new Color(255.0f / 255.0f, 5.0f / 255.0f, 0.0f / 255.0f);
 		}
 		RedObjects.SetActive(false);
+		ColorRed = true;
+		ColorBlue = false;
+		ColorGreen = false;
+		ColorWhite = false;
 		//NoneObjects.SetActive(true);
 
 	}
@@ -248,6 +264,10 @@ public class ImageSwitcher : MonoBehaviour {
 			OnLeverTag[i].GetComponent<SpriteRenderer>().color = new Color(80.0f / 255.0f, 255.0f / 255.0f, 0.0f / 255.0f);
 		}
 		GreenObjects.SetActive(false);
+		ColorRed = false;
+		ColorBlue = false;
+		ColorGreen = true;
+		ColorWhite = false;
 		//NoneObjects.SetActive(true);
 	}
 	public void SetColorBlue()
@@ -267,6 +287,10 @@ public class ImageSwitcher : MonoBehaviour {
 			OnLeverTag[i].GetComponent<SpriteRenderer>().color = new Color(0.0f / 255.0f, 155.0f / 255.0f, 255.0f / 255.0f);
 		}
 		BlueObjects.SetActive(false);
+		ColorRed = false;
+		ColorBlue = true;
+		ColorGreen = false;
+		ColorWhite = false;
 		//NoneObjects.SetActive(true);
 	}
 
@@ -289,8 +313,35 @@ public class ImageSwitcher : MonoBehaviour {
 		RedObjects.SetActive(true);
 		BlueObjects.SetActive(true);
 		GreenObjects.SetActive(true);
+		ColorRed = false;
+		ColorBlue = false;
+		ColorGreen = false;
+		ColorWhite = true;
 		//NoneObjects.SetActive(false);
 	}
 
+
+	public int GetColorSet()
+    {
+		if (ColorRed == true)
+		{
+			return 1;
+		}
+
+		else if (ColorGreen == true)
+		{
+			return 2;
+		}
+		else if (ColorBlue == true)
+		{
+			return 3;
+		}
+		else if (ColorWhite == true)
+		{
+			return 4;
+		}
+		else
+			return 0;
+	}
 
 }

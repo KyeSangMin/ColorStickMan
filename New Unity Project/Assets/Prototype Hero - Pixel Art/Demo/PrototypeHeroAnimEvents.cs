@@ -34,6 +34,7 @@ public class PrototypeHeroAnimEvents : MonoBehaviour
         float dustYOffset = 0.078125f;
         m_player.SpawnDustEffect(m_RunStopDust, dustXOffset, dustYOffset);
         m_player.GetComponent<BoxCollider2D>().enabled = true;
+        
     }
 
     void AE_setPositionToClimbPosition()

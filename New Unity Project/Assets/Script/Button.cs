@@ -87,7 +87,7 @@ public class Button : MonoBehaviour
             
         }
 
-        Debug.Log("Start");
+      
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -120,7 +120,7 @@ public class Button : MonoBehaviour
 
         for (int i = 0; i < ChildArray.Length; i++)
         {
-            Debug.Log("check1");
+           
             ButtonComparison = ChildArray[i].GetComponent<Button>().GetButtonState();
 
             if (ButtonComparison == true && ChildArray[i].gameObject != this.gameObject)
@@ -141,7 +141,7 @@ public class Button : MonoBehaviour
 
         for (int i = 0; i < ChildArray.Length; i++)
         {
-            Debug.Log("check1");
+       
             ButtonComparison = ChildArray[i].GetComponent<Button>().GetButtonState();
 
             if (ButtonComparison == true && ChildArray[i].gameObject != this.gameObject)
@@ -202,7 +202,7 @@ public class Button : MonoBehaviour
             ResetIEnum();
             
             anima.SetBool("Button", false);
-            Debug.Log(gameObject.name + "1");
+           
 
             if (GameObject.Find("ButtonSystem").GetComponent<ButtonSystem>().CheckIndex(this.gameObject))
             {
@@ -217,7 +217,7 @@ public class Button : MonoBehaviour
             SetButtonState();
             ResetIEnum();
             anima.SetBool("Button", false);
-            Debug.Log(gameObject.name+ "2");
+            
         }
        
    

@@ -44,7 +44,7 @@ public class PrototypeHero : MonoBehaviour {
 
     public GameObject RespownPoint;
     public GameObject Camera;
-
+    public GameObject InputCon;
 
     // Use this for initialization
     void Start ()
@@ -54,6 +54,8 @@ public class PrototypeHero : MonoBehaviour {
         m_SR = GetComponentInChildren<SpriteRenderer>();
         m_gravity = m_body2d.gravityScale;
         m_boxcollider2d = GetComponent<BoxCollider2D>();
+
+        InputCon = GameObject.Find("InputSystem");
 
         m_groundSensor = transform.Find("GroundSensor").GetComponent<Sensor_Prototype>();
         m_wallSensorR1 = transform.Find("WallSensor_R1").GetComponent<Sensor_Prototype>();
@@ -65,6 +67,11 @@ public class PrototypeHero : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
+
+        if (InputCon.GetComponent<InputControl>().InputCon == false )
+        {
+
+
         // Decrease death respawn timer 
         m_respawnTimer -= Time.deltaTime;
 
@@ -384,6 +391,18 @@ public class PrototypeHero : MonoBehaviour {
         //Idle
         else
             m_animator.SetInteger("AnimState", 0);
+
+
+        }
+
+
+        else if(InputCon.GetComponent<InputControl>().InputCon == true)
+        {
+            
+        }
+
+
+
     }
 
     // Function used to spawn a dust effect

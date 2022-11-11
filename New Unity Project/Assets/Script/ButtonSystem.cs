@@ -56,7 +56,7 @@ public class ButtonSystem : MonoBehaviour
 
     public bool CheckIndex(GameObject gameObject)
     {
-        Debug.Log(gameObject.name);
+       
         TempObject = gameObject;
         if (Indexnum == 0 && ButtonStatic[Indexnum] == TempObject)
             return true;

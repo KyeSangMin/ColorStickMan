@@ -25,7 +25,7 @@ public class FollowCam : MonoBehaviour
 
     private float lastZoomSpeed;
 
-
+    GameObject InputCon;
 
     //카메라 흔들기
     //참고 코드 출처: https://chameleonstudio.tistory.com/55
@@ -44,13 +44,17 @@ public class FollowCam : MonoBehaviour
         checkstate = false;
 
         cam = this.GetComponent<Camera>();
+        InputCon = GameObject.Find("InputSystem");
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if(Input.GetKeyDown("z") && !checkstate)
+        if(InputCon.GetComponent<InputControl>().InputCon == false)
+        {
+
+        if (Input.GetKeyDown("z") && !checkstate)
         {
             Tracking = false; 
             Zoom = true;
@@ -81,7 +85,13 @@ public class FollowCam : MonoBehaviour
 
         ShakeCam();
 
-       
+        }
+
+        else if(InputCon.GetComponent<InputControl>().InputCon == true)
+        {
+
+        }
+
 
     }
 

@@ -25,8 +25,7 @@ public class NoiseEffect : MonoBehaviour
 
         if(Hero.GetComponent<PrototypeHero>().GetDead() == true)
         {
-            NoseImage.SetActive(true);
-            StartCoroutine(NoiseDelay(NoiseTime));
+            StartNose(0.1f);
         }
         
         
@@ -34,17 +33,17 @@ public class NoiseEffect : MonoBehaviour
     }
 
 
+
+    public void StartNose(float NoiseTime)
+    {
+        NoseImage.SetActive(true);
+        StartCoroutine(NoiseDelay(NoiseTime));
+    }
     IEnumerator NoiseDelay(float NoiseTime)
     {
 
         yield return new WaitForSeconds(NoiseTime);
         NoseImage.SetActive(false);
-
-
-
-
-
-
 
     }
 
