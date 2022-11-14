@@ -41918,10 +41918,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     name: asdf
+    EvenetNum: 
     sentences:
-    - "FirstTextFirstTextFirstTextFirstTextFirstTextFirstTextFirstTextFirstTextFirstTextFirstTextFirstTextFirstTextFirstTextFirstTextFirstTextFirstTextFirstTextFirstText\t"
-    - secondTextsecondTextsecondTextsecondTextsecondTextsecondTextsecondTextsecondTextsecondTextsecondTextsecondText
-    - thirdTextthirdTextthirdTextthirdTextthirdTextthirdTextthirdTextthirdTextthirdTextthirdTextthirdTextthirdTextthirdTextthirdTextthirdText
+    - aaaaaaassssssssssssddddddddddddqqqqqqqqwwwwwwwweeeeeeeeeee
 --- !u!1 &723087036
 GameObject:
   m_ObjectHideFlags: 0
@@ -54894,6 +54893,7 @@ MonoBehaviour:
   nameText: {fileID: 363640533}
   dialogueText: {fileID: 336838079}
   animator: {fileID: 466756019}
+  csvFile: {fileID: 4900000, guid: 5a3eae5778e91404f982808dd422d507, type: 3}
 --- !u!4 &1718698401 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8602598713668007755, guid: b1bb7ca44ace4124194362157a63e896, type: 3}

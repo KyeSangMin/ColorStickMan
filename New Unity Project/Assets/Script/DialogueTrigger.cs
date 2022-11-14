@@ -9,15 +9,19 @@ public class DialogueTrigger : MonoBehaviour
     public Dialogue dialogue;
 
 
-
+    private void Awake()
+    {
+        FindObjectOfType<DialogueSystem>().SplitDialogue(dialogue);
+    }
 
     public void TriggerDialogue()
     {
+        
         FindObjectOfType<DialogueSystem>().StartDialogue(dialogue);
     }
 
 
-
+    
 
 
 }
