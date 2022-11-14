@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class DialogueSystem : MonoBehaviour
 {
-
+    // 코드 출처 https://www.youtube.com/watch?v=_nRzoTzeyxU 
+    // https://velog.io/@gkswh4860/Unity-%EC%97%91%EC%85%80-%EB%8C%80%ED%99%94-%EB%82%B4%EC%9A%A9%EC%9D%84-%EB%8C%80%ED%99%94-%EC%9D%B4%EB%A6%84%EC%9C%BC%EB%A1%9C-%EB%AC%B6%EC%96%B4%EC%84%9C-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0#%EC%98%88%EC%99%B8-%EC%B2%98%EB%A6%AC
 
     public Text nameText;
     public Text dialogueText;
@@ -24,7 +25,10 @@ public class DialogueSystem : MonoBehaviour
     }
 
 
-   public static Dictionary<string, TalkData[]> DialoueDictionary =
+   
+
+
+    public static Dictionary<string, TalkData[]> DialoueDictionary =
                      new Dictionary<string, TalkData[]>();
 
 
@@ -37,11 +41,11 @@ public class DialogueSystem : MonoBehaviour
     void Start()
     {
         sentences = new Queue<string>();
-
-
+       
     }
 
 
+   
 
 
     public void SplitDialogue(Dialogue dialogue)
@@ -50,8 +54,8 @@ public class DialogueSystem : MonoBehaviour
         string csvText = csvFile.text.Substring(0, csvFile.text.Length - 1);
 
         string[] rows = csvText.Split(new char[] { '\n' });
-        
-        
+
+
         // 엑셀 파일 1번째 줄은 편의를 위한 분류이므로 i = 1부터 시작
         for (int i = 1; i < rows.Length; i++)
         {
@@ -62,20 +66,20 @@ public class DialogueSystem : MonoBehaviour
             if (rowValues[0].Trim() == "" || rowValues[0].Trim() == "end") continue;
 
             List<TalkData> talkDataList = new List<TalkData>();
-            //string eventName = rowValues[0]; <= 원본코드
+            string eventName = rowValues[0]; //<= 원본코드
             dialogue.EvenetNum = rowValues[0];
 
-            
+
             while (rowValues[0].Trim() != "end") // talkDataList 하나를 만드는 반복문
             {
-                
+
                 // 캐릭터가 한번에 치는 대사의 길이를 모르므로 리스트로 선언
                 List<string> contextList = new List<string>();
-                
+
 
                 TalkData talkData;
                 talkData.name = rowValues[1]; // 캐릭터 이름이 있는 B열
-                
+
 
                 do // talkData 하나를 만드는 반복문
                 {
@@ -85,17 +89,23 @@ public class DialogueSystem : MonoBehaviour
                     else break;
                 } while (rowValues[1] == "" && rowValues[0] != "end");
 
+
+
                 talkData.contexts = contextList.ToArray();
                 talkDataList.Add(talkData);
 
-                contextsentance = contextList.ToArray();
-                dialogue.sentences = contextsentance;
 
-               
+
+
+                //contextsentance = contextList.ToArray();
+                //dialogue.sentences = contextsentance;
+
+
             }
+
             
             DialoueDictionary.Add(dialogue.EvenetNum, talkDataList.ToArray());
-            
+
         }
 
 
@@ -103,36 +113,43 @@ public class DialogueSystem : MonoBehaviour
 
 
 
-
-
-    public void SetEventNum(Dialogue dialogue, string eventNum)
+    public void SetEventNum(TalkData[] talkDatas)
     {
 
-        TalkData[] talkDatas;
-        TalkData talk;
-
-        List<string> contextList = new List<string>();
-
-        foreach (KeyValuePair<string, TalkData[]> item in DialoueDictionary)
-        {
-
-            if(item.Key == eventNum)
-            {
-                talkDatas = item.Value;
-                contextList.Add(talkDatas.ToString());
-                Debug.Log(talkDatas);
-            }
-            
-
-        }
-        talk.contexts = contextList.ToArray();
-      
-        contextsentance = talk.contexts;
-        dialogue.sentences = contextsentance;
         
+        for (int i = 0; i < talkDatas.Length; i++)
+        {
+            // 캐릭터 이름 출력
+            //Debug.Log(talkDatas[i].name);
+            // 대사들 출력
+            foreach (string context in talkDatas[i].contexts)
+            {
+                sentences.Enqueue(context);
+            }
+        }
+
+
+        
+
     }
 
+    public static TalkData[] GetDialogue(string eventName)
+    {
+        // 키에 매칭되는 값이 있으면 true 없으면 false
+      
+        if(DialoueDictionary.ContainsKey(eventName))
+        return DialoueDictionary[eventName];
+        else
+        {
+            // 경고 출력하고 null 반환
+            Debug.LogWarning("찾을 수 없는 이벤트 이름 : " + eventName);
+            return null;
+        }
 
+
+
+
+    }
 
 
     public void StartDialogue (Dialogue dialogue)
@@ -142,15 +159,22 @@ public class DialogueSystem : MonoBehaviour
 
         nameText.text = dialogue.name;
 
+        TalkData[] talkDatas;
+
+        
+        talkDatas = GetDialogue(FindObjectOfType<GameManager>().CheckEvent());
+        
+
+
         sentences.Clear();
-        //SetEventNum(dialogue,"2");
+        SetEventNum(talkDatas);
 
-
+        /*
         foreach (string sentence in dialogue.sentences)
         {
-                sentences.Enqueue(sentence);
+               sentences.Enqueue(sentence);
         }
-       
+       */
         
 
         DisPlayNextSentence();
@@ -189,10 +213,6 @@ public class DialogueSystem : MonoBehaviour
 
 
     }
-
-
-
-
 
 
 

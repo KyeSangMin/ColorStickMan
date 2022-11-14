@@ -275,8 +275,6 @@ C:\Users\Hasta\Documents\GitHub\ColorStickMan\New Unity Project\Temp\Bin\Debug\U
 C:\Users\Hasta\Documents\GitHub\ColorStickMan\New Unity Project\Temp\Bin\Debug\UnityEditor.UIServiceModule.xml
 C:\Users\Hasta\Documents\GitHub\ColorStickMan\New Unity Project\Temp\Bin\Debug\UnityEditor.UnityConnectModule.xml
 C:\Users\Hasta\Documents\GitHub\ColorStickMan\New Unity Project\Temp\Bin\Debug\UnityEditor.WindowsStandalone.Extensions.pdb
-C:\Users\Hasta\Documents\GitHub\ColorStickMan\New Unity Project\Temp\Bin\Debug\UnityEditor.UI.pdb
-C:\Users\Hasta\Documents\GitHub\ColorStickMan\New Unity Project\Temp\Bin\Debug\UnityEngine.UI.pdb
 C:\Users\Hasta\Documents\GitHub\ColorStickMan\New Unity Project\obj\Debug\Unity.2D.Animation.Triangle.Runtime.csproj.AssemblyReference.cache
 C:\Users\Hasta\Documents\GitHub\ColorStickMan\New Unity Project\obj\Debug\Unity.2D.Animation.Triangle.Runtime.csproj.CoreCompileInputs.cache
 C:\Users\Hasta\Documents\GitHub\ColorStickMan\New Unity Project\obj\Debug\Unity.2D.Animation.Triangle.Runtime.dll

@@ -485,4 +485,10 @@ public class PrototypeHero : MonoBehaviour {
         }
 
     }
+
+
+    public void SetRespownPoint(GameObject gameObject)
+    {
+        RespownPoint = gameObject;
+    }
 }
