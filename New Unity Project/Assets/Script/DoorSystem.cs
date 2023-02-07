@@ -72,6 +72,8 @@ public class DoorSystem : MonoBehaviour
         Vector3 Outvec3 = Target.transform.position;
         Ptemp.x = Outvec3.x - 0.5f;
         Ctemp.x = Outvec3.x - 0.5f;
+        Ptemp.y = Outvec3.y - 0.5f;
+        Ctemp.y = Outvec3.y - 0.5f;
         Player.transform.position = Ptemp;
         MainCamera.transform.position = Ctemp;
         Noise.GetComponent<NoiseEffect>().StartNose(0.1f);

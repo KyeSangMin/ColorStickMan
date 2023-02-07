@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     private GameObject DialogueEventData;
 
 
+    private int EventNumber;
 
 
 
@@ -27,8 +28,8 @@ public class GameManager : MonoBehaviour
     {
         PlayerData = GameObject.Find("PrototypeHero");
         EventString = "1";
-
-
+       
+        
 
     }
 
@@ -58,7 +59,22 @@ public class GameManager : MonoBehaviour
 
     }
 
-    
+    public int GetEventNumber()
+    {
+        return EventNumber;
+    }
 
+    public void SetEventNumber(int EventNum)
+    {
+
+        EventNumber = EventNum;
+
+
+    }
+
+    public void SetNumToString()
+    {
+        EventString = EventNumber.ToString();
+    }
 
 }
