@@ -114,7 +114,7 @@ TextureImporter:
       213: 21300072
     second: Dust_32
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -131,10 +131,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -173,6 +175,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -184,6 +188,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 1
   - serializedVersion: 3
@@ -196,6 +201,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
@@ -904,9 +910,42 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      Dust_0: 21300008
+      Dust_1: 21300010
+      Dust_10: 21300028
+      Dust_11: 21300030
+      Dust_12: 21300032
+      Dust_13: 21300034
+      Dust_14: 21300036
+      Dust_15: 21300038
+      Dust_16: 21300040
+      Dust_17: 21300042
+      Dust_18: 21300044
+      Dust_19: 21300046
+      Dust_2: 21300012
+      Dust_20: 21300048
+      Dust_21: 21300050
+      Dust_22: 21300052
+      Dust_23: 21300054
+      Dust_24: 21300056
+      Dust_25: 21300058
+      Dust_26: 21300060
+      Dust_27: 21300062
+      Dust_28: 21300064
+      Dust_29: 21300066
+      Dust_3: 21300014
+      Dust_30: 21300068
+      Dust_31: 21300070
+      Dust_32: 21300072
+      Dust_4: 21300016
+      Dust_5: 21300018
+      Dust_6: 21300020
+      Dust_7: 21300022
+      Dust_8: 21300024
+      Dust_9: 21300026
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
